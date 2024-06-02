@@ -72,7 +72,9 @@ public class ExtensionService {
     public void toggleFixedExtension(Long id, boolean isOn) {
         Extension extension = extensionRepository.findById(id)
                 .orElseThrow(() -> new BusinessException(ErrorCode.EXTENSION_NOT_FOUND));
-
+        if (extension.isCustom()) {
+            throw new BusinessException(ErrorCode.EXTENSION_CUSTOM_EXTENSION_CANNOT_BE_TOGGLED);
+        }
         extension.toggleOn(isOn);
     }
 }
