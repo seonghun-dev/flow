@@ -1,11 +1,11 @@
-package org.example.flow.controller;
+package org.example.flow.domain.extension.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.example.flow.common.dto.ResponseDto;
-import org.example.flow.dto.request.ExtensionRequestDto;
-import org.example.flow.dto.request.ExtensionToggleRequestDto;
-import org.example.flow.dto.response.ExtensionListResponseDto;
-import org.example.flow.service.ExtensionService;
+import org.example.flow.domain.extension.dto.request.ExtensionRequestDto;
+import org.example.flow.domain.extension.dto.request.ExtensionToggleRequestDto;
+import org.example.flow.domain.extension.dto.response.ExtensionListResponseDto;
+import org.example.flow.domain.extension.service.ExtensionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

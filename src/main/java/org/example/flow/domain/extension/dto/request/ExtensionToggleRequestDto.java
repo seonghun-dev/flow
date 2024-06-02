@@ -1,4 +1,4 @@
-package org.example.flow.dto.request;
+package org.example.flow.domain.extension.dto.request;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 

@@ -1,4 +1,4 @@
-package org.example.flow.entity;
+package org.example.flow.domain.extension.entity;
 
 
 import jakarta.persistence.Column;
