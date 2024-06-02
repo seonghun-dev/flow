@@ -1,0 +1,23 @@
+.custom-extension-input-container {
+    display: flex;
+    align-items: center;
+    margin : 5px;
+}
+
+.custom-extension-input{
+    font-size : 12px;
+    border: 1px solid #545454;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-right: 5px;
+}
+
+.custom-extension-add-button {
+    background-color:  #A9AAAC;
+    font-size: 12px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding : 5px 10px;
+}
