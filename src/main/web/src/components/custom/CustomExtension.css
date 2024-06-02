@@ -1,0 +1,28 @@
+.custom-extension-item {
+    display: flex;
+    align-items: center;
+    font-size : 12px;
+    border: 1px solid #545454;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 5px;
+    background-color: transparent;
+    width: fit-content;
+}
+
+.custom-extension-name-button {
+    display: flex;
+    align-items: center;
+}
+
+.custom-extension-name {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.custom-extension-delete-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+

@@ -1,0 +1,48 @@
+.fixed-extension-items {
+    display: flex;
+
+}
+
+.fixed-extension-title {
+    margin-right: 20px;
+    font-weight: bold;
+
+}
+
+.custom-extension-title {
+    margin-right: 20px;
+    font-weight: bold;
+    margin-top : 5px;
+    width: fit-content;
+}
+
+.custom-extension-item-block {
+    max-width: 600px;
+}
+
+.custom-extension-items {
+    display: flex;
+
+}
+
+.custom-extension-item-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    font-size: 12px;
+    border: 1px solid #545454;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px;
+    background-color: transparent;
+    width: fit-content;
+}
+
+.custom-extension-item-count {
+    font-weight: bold;
+    font-size: 12px;
+    flex-basis: 100%;
+    flex-shrink: 0;
+    margin: 5px;
+}
+
