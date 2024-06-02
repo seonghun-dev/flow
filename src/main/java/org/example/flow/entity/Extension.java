@@ -28,8 +28,8 @@ public class Extension {
     @Column(nullable = false, name = "is_custom")
     private boolean isCustom;
 
-    public void toggleCustom(boolean isCustom) {
-        this.isCustom = isCustom;
+    public void toggleOn(boolean isOn) {
+        this.isOn = isOn;
     }
 
     public Extension(String extensionName) {

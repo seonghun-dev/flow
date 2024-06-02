@@ -8,10 +8,10 @@ CREATE TABLE extension (
 );
 
 INSERT INTO extension (name, is_on, is_custom) VALUES
-                                                          ('bat', TRUE, FALSE),
-                                                          ('cmd', TRUE, FALSE),
-                                                          ('com', TRUE, FALSE),
-                                                          ('cpl', TRUE, FALSE),
-                                                          ('exe', TRUE, FALSE),
-                                                          ('scr', TRUE, FALSE),
-                                                          ('js', TRUE, FALSE);
+                                                          ('bat', FALSE, FALSE),
+                                                          ('cmd', FALSE, FALSE),
+                                                          ('com', FALSE, FALSE),
+                                                          ('cpl', FALSE, FALSE),
+                                                          ('exe', FALSE, FALSE),
+                                                          ('scr', FALSE, FALSE),
+                                                          ('js', FALSE, FALSE);

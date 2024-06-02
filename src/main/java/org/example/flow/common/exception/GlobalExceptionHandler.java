@@ -1,6 +1,7 @@
 package org.example.flow.common.exception;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -9,10 +10,13 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(BusinessException.class)
-    protected ErrorResponseDto handleBusinessException(
+    protected ResponseEntity<ErrorResponseDto> handleBusinessException(
             final BusinessException e
     ) {
-        return ErrorResponseDto.from(e.getErrorCode());
+
+        return ResponseEntity
+                .status(e.getErrorCode().getHttpStatus())
+                .body(ErrorResponseDto.from(e.getErrorCode()));
     }
 
 }

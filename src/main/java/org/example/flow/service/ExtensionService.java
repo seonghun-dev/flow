@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -26,27 +25,37 @@ public class ExtensionService {
         List<ExtensionResponseDto> customExtensionList = extensions.stream()
                 .filter(Extension::isCustom)
                 .map(ExtensionResponseDto::from)
-                .collect(Collectors.toList());
+                .toList();
 
         List<ExtensionResponseDto> fixedExtensionList = extensions.stream()
                 .filter(ext -> !ext.isCustom())
                 .map(ExtensionResponseDto::from)
-                .collect(Collectors.toList());
+                .toList();
 
         return new ExtensionListResponseDto(fixedExtensionList, customExtensionList);
     }
 
     @Transactional
-    public Object addExtension(String extension) {
-        if (extension.length() > 20 || extension.isEmpty()) {
+    public void addExtension(String extensionName) {
+
+        int maxExtensionStringLength = 20;
+        int maxCustomExtensionCount = 200;
+
+        if (extensionName.length() > maxExtensionStringLength || extensionName.isEmpty()) {
             throw new BusinessException(ErrorCode.EXTENSION_INVALID_LENGTH_INPUT);
         }
-        if (extensionRepository.existsByName(extension)) {
+
+        if (extensionRepository.existsByName(extensionName)) {
             throw new BusinessException(ErrorCode.EXTENSION_ALREADY_EXISTS);
         }
-        Extension newExtension = new Extension(extension);
+
+        if (extensionRepository.countByIsCustomTrue() >= maxCustomExtensionCount) {
+            throw new BusinessException(ErrorCode.EXTENSION_EXCEED_LIMIT);
+        }
+
+        Extension newExtension = new Extension(extensionName);
         extensionRepository.save(newExtension);
-        return null;
+
     }
 
     @Transactional
@@ -64,6 +73,6 @@ public class ExtensionService {
         Extension extension = extensionRepository.findById(id)
                 .orElseThrow(() -> new BusinessException(ErrorCode.EXTENSION_NOT_FOUND));
 
-        extension.toggleCustom(isOn);
+        extension.toggleOn(isOn);
     }
 }

@@ -1,7 +1,9 @@
 package org.example.flow.controller;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.RequiredArgsConstructor;
+import org.example.flow.common.dto.ResponseDto;
+import org.example.flow.dto.request.ExtensionRequestDto;
+import org.example.flow.dto.request.ExtensionToggleRequestDto;
 import org.example.flow.dto.response.ExtensionListResponseDto;
 import org.example.flow.service.ExtensionService;
 import org.springframework.http.ResponseEntity;
@@ -17,27 +19,28 @@ public class ExtensionController {
     @GetMapping
     public ResponseEntity<ExtensionListResponseDto> getAllExtensions() {
         var response = extensionService.getAllExtensions();
-        return ResponseEntity.ok(response);
+        return ResponseDto.ok(response);
     }
 
     @PostMapping
-    public ResponseEntity<?> addExtension(
-            @Schema(description = "확장자 이름", example = "pdf")
-            @RequestParam String extensionName
-    ) {
-        var response = extensionService.addExtension(extensionName);
-        return ResponseEntity.ok(response);
+    public ResponseEntity<?> addExtension(@RequestBody ExtensionRequestDto extensionRequestDto) {
+        extensionService.addExtension(extensionRequestDto.extensionName());
+        return ResponseDto.createdWithStatus();
     }
 
     @DeleteMapping("/{id}")
-    public void deleteExtension(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteExtension(@PathVariable Long id) {
         extensionService.deleteExtension(id);
+        return ResponseDto.noContent();
     }
 
     @PatchMapping("/{id}")
-    public void toggleFixedExtension(@PathVariable Long id, @RequestParam boolean isOn) {
-        extensionService.toggleFixedExtension(id, isOn);
+    public ResponseEntity<Void> toggleFixedExtension(
+            @PathVariable Long id,
+            @RequestBody ExtensionToggleRequestDto extensionToggleRequestDto
+    ) {
+        extensionService.toggleFixedExtension(id, extensionToggleRequestDto.isOn());
+        return ResponseDto.noContent();
     }
-
 
 }
