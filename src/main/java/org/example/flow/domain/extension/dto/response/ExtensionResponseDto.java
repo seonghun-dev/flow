@@ -1,7 +1,7 @@
-package org.example.flow.dto.response;
+package org.example.flow.domain.extension.dto.response;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import org.example.flow.entity.Extension;
+import org.example.flow.domain.extension.entity.Extension;
 
 public record ExtensionResponseDto(
         @Schema(description = "확장자 ID", example = "1")

@@ -1,12 +1,12 @@
-package org.example.flow.service;
+package org.example.flow.domain.extension.service;
 
 import lombok.RequiredArgsConstructor;
 import org.example.flow.common.exception.BusinessException;
 import org.example.flow.common.exception.ErrorCode;
-import org.example.flow.dto.response.ExtensionListResponseDto;
-import org.example.flow.dto.response.ExtensionResponseDto;
-import org.example.flow.entity.Extension;
-import org.example.flow.repository.ExtensionRepository;
+import org.example.flow.domain.extension.dto.response.ExtensionListResponseDto;
+import org.example.flow.domain.extension.dto.response.ExtensionResponseDto;
+import org.example.flow.domain.extension.entity.Extension;
+import org.example.flow.domain.extension.repository.ExtensionRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
